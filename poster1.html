@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jodi Design - Professional Poster Design Services">
+    <title>Jodi Design | Poster Design Services</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        /* Navbar styles */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 5px 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .navbar-logo img {
+            width: 80px;
+            transition: var(--transition);
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbutton {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .navbutton:hover, .navbutton.active {
+            color: var(--primary-color);
+        }
+        
+        .navbutton::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .navbutton:hover::after, .navbutton.active::after {
+            width: 80%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        /* Main content */
+        main {
+            margin-top: 120px;
+            padding: 20px;
+        }
+        
+        .section_name {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section_name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .logo-showcase {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo-showcase img {
+            width: 30%;
+            height: auto;
+            object-fit: contain;
+            transition: var(--transition);
+            filter: grayscale(30%);
+        }
+        
+        .logo-showcase img:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        
+        .description_about {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        .description_about h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .description_about p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .description_about h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+        
+        .description_about ul {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .description_about li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .description_about li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .form_button_sm {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .form_button_sm:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Portfolio gallery */
+        .portfolio-gallery {
+            margin-top: 50px;
+        }
+        
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: none;
+            border: 1px solid var(--primary-color);
+            border-radius: 30px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            height: 300px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer {
+            font-size: 1rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            max-width: 800px;
+            width: 90%;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: white;
+            background: var(--accent-color);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+        }
+        
+        .modal-details {
+            padding: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .modal-description {
+            font-size: 1rem;
+            color: var(--dark-color);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+            visibility: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 900;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .navbar-links.active {
+                max-height: 300px;
+                padding: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .section_name {
+                font-size: 2rem;
+            }
+            
+            .logo-showcase img {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="./index.html">
+                <img src="img/Jodis Logo finale.svg" alt="Jodi Design Logo">
+            </a>
+        </div>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="navbar-links" id="navLinks">
+            <a href="./index.html"><button class="navbutton">Home</button></a>
+            <a href="./index.html#about_me"><button class="navbutton">About Me</button></a>
+            <a href="./index.html#my_tracks"><button class="navbutton">Services</button></a>
+            <a href="./index.html#Curriculum_Vitae"><button class="navbutton">Curriculum Vitae</button></a>
+            <a href="#poster-gallery"><button class="navbutton active">Portfolio</button></a>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <h1 class="section_name fade-in">Professional UX/UI Designer</h1>
+        
+        <div class="container">
+            <div class="logo-showcase fade-in">
+                <img class="img" src="img/UX.jpg" alt="" style="width: 30%; height: auto; object-fit: containt" >
+                <img class="img" src="img/UX1.jpg" alt="" style="width: 30%; height: auto; object-fit: containt">
+                <img class="img" src="img/UX3.jpg" alt="" style="width: 30%; height: auto; object-fit: containt">
+            </div>
+            
+            <div class="description_about fade-in">
+                <h2>Professional UX/UI Designer</h2>
+                <p>
+                    Design intuitive and visually appealing interfaces to ensure a smooth and enjoyable user experience. A perfect blend of usability and creativity for modern websites and applications.
+                </p>
+                
+                <p>
+                    Each design is crafted with your specific goals, target audience, and brand identity in mind, ensuring
+                    a unique and effective final product that stands out from the competition.
+                </p>
+                
+                <h3>Our Collaborative Design Process:</h3>
+                <ul>
+                    <li>Initial consultation to understand your vision and objectives</li>
+                    <li>Concept development with multiple design directions</li>
+                    <li>Digital design creation with premium typography and imagery</li>
+                    <li>Revision cycles to refine and perfect your design</li>
+                    <li>Final delivery in multiple formats optimized for print and digital use</li>
+                </ul>
+                
+                <a href="./index.html#contact">
+                    <button class="form_button_sm">Get a Free Quote</button>
+                </a>
+            </div>
+            
+            <!-- Portfolio Gallery Section -->
+            <div class="portfolio-gallery fade-in" id="poster-gallery">
+                <h2 class="section_name">Our Poster Portfolio</h2>
+                
+                <div class="gallery-filter">
+                    <button class="filter-btn active" data-filter="all">All Works</button>
+                    <button class="filter-btn" data-filter="event">Event Posters</button>
+                    <button class="filter-btn" data-filter="promo">Promotional</button>
+                    <button class="filter-btn" data-filter="corporate">Corporate</button>
+                </div>
+                
+                <div class="gallery-container">
+                    <!-- Gallery items would be populated from your portfolio -->
+                    <div class="gallery-item" data-category="event">
+                        <img class="img" src="img/hm4.jfif" alt="Event Poster Example">
+                        <div class="gallery-item-overlay">
+                            <h3>Music Festival Poster</h3>
+                            <p>Vibrant design for annual music event</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="promo">
+                        <img class="img" src="img/hm3.jfif" alt="Event Poster Example">
+                        <div class="gallery-item-overlay">
+                            <h3>Product Launch Campaign</h3>
+                            <p>Bold promotional materials for new product line</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="corporate">
+                        <img class="img" src="img/hm2.jfif" alt="Event Poster Example">
+                        <div class="gallery-item-overlay">
+                            <h3>Annual Report Design</h3>
+                            <p>Clean, professional corporate communications</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="event">
+                        <img class="img" src="img/hm1.jfif" alt="Event Poster Example">
+                        <div class="gallery-item-overlay">
+                            <h3>Tech Conference</h3>
+                            <p>Modern design for industry conference</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials Section -->
+            <div class="testimonials fade-in">
+                <h2 class="section_name">Client Testimonials</h2>
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <!-- Testimonials would be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for portfolio items -->
+    <div class="modal" id="portfolioModal">
+        <div class="modal-content">
+            <div class="modal-close" id="modalClose">&times;</div>
+            <img class="modal-image" id="modalImage" src="" alt="Portfolio item">
+            <div class="modal-details">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <p class="modal-description" id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        &#9650;
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer">&copy; 2025 Jodi Design. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const navbar = document.querySelector('.navbar');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const backToTop = document.getElementById('backToTop');
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const portfolioModal = document.getElementById('portfolioModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button visibility
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Fade-in animation for elements
+            fadeElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        });
+
+        // Back to top functionality
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Portfolio filtering
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Portfolio modal functionality
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').getAttribute('src');
+                const title = item.querySelector('h3').textContent;
+                const description = item.querySelector('p').textContent;
+                
+                modalImage.setAttribute('src', imgSrc);
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                
+                portfolioModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        portfolioModal.addEventListener('click', (e) => {
+            if (e.target === portfolioModal) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            portfolioModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Testimonials slider
+        const testimonials = [
+            {
+                name: "Marie Dupont",
+                company: "Événements Prestige",
+                text: "Le design de poster créé par Jodi Design a vraiment démarqué notre événement. Professionnel, élégant et accrocheur!"
+            },
+            {
+                name: "Thomas Martin",
+                company: "Tech Solutions",
+                text: "Une collaboration fantastique. Jodi a parfaitement compris nos besoins et livré un design qui a dépassé nos attentes."
+            },
+            {
+                name: "Sophie Laurent",
+                company: "Marketing Créatif",
+                text: "Service impeccable et designs innovants. Je recommande vivement Jodi Design pour tout projet de poster professionnel."
+            }
+        ];
+
+        const testimonialsSlider = document.getElementById('testimonialsSlider');
+        
+        // Create testimonial HTML
+        function createTestimonialHTML(testimonial, index) {
+            return `
+                <div class="testimonial-item ${index === 0 ? 'active' : ''}" data-index="${index}">
+                    <p class="testimonial-text">"${testimonial.text}"</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">${testimonial.name}</p>
+                        <p class="author-company">${testimonial.company}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Populate testimonials
+        testimonials.forEach((testimonial, index) => {
+            testimonialsSlider.innerHTML += createTestimonialHTML(testimonial, index);
+        });
+
+        // Add navigation controls
+        testimonialsSlider.innerHTML += `
+            <div class="testimonial-controls">
+                <button class="testimonial-prev">&#8249;</button>
+                <div class="testimonial-dots"></div>
+                <button class="testimonial-next">&#8250;</button>
+            </div>
+        `;
+
+        // Add dots
+        const dotsContainer = testimonialsSlider.querySelector('.testimonial-dots');
+        testimonials.forEach((_, index) => {
+            dotsContainer.innerHTML += `<span class="testimonial-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`;
+        });
+
+        // Add styles for testimonials
+        const style = document.createElement('style');
+        style.textContent = `
+            .testimonials {
+                margin-top: 60px;
+            }
+            
+            .testimonials-slider {
+                position: relative;
+                max-width: 800px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            
+            .testimonial-item {
+                background-color: white;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                margin: 20px 0;
+                display: none;
+                animation: fadeIn 0.5s;
+            }
+            
+            .testimonial-item.active {
+                display: block;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .testimonial-text {
+                font-size: 1.1rem;
+                font-style: italic;
+                margin-bottom: 20px;
+                line-height: 1.7;
+            }
+            
+            .testimonial-author {
+                text-align: right;
+            }
+            
+            .author-name {
+                font-weight: 600;
+                color: var(--secondary-color);
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+            
+            .author-company {
+                color: var(--primary-color);
+                font-size: 0.9rem;
+            }
+            
+            .testimonial-controls {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+            }
+            
+            .testimonial-prev, .testimonial-next {
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: var(--primary-color);
+                cursor: pointer;
+                padding: 0 15px;
+                transition: var(--transition);
+            }
+            
+            .testimonial-prev:hover, .testimonial-next:hover {
+                color: #2980b9;
+                transform: scale(1.2);
+            }
+            
+            .testimonial-dots {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .testimonial-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: #e0e0e0;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+            
+            .testimonial-dot.active {
+                background-color: var(--primary-color);
+                transform: scale(1.2);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Testimonial navigation functionality
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            document.querySelectorAll('.testimonial-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.testimonial-dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            document.querySelector(`.testimonial-item[data-index="${index}"]`).classList.add('active');
+            document.querySelector(`.testimonial-dot[data-index="${index}"]`).classList.add('active');
+            
+            currentTestimonial = index;
+        }
+        
+        document.querySelector('.testimonial-next').addEventListener('click', () => {
+            let nextIndex = currentTestimonial + 1;
+            if (nextIndex >= testimonials.length) {
+                nextIndex = 0;
+            }
+            showTestimonial(nextIndex);
+        });
+        
+        document.querySelector('.testimonial-prev').addEventListener('click', () => {
+            let prevIndex = currentTestimonial - 1;
+            if (prevIndex < 0) {
+                prevIndex = testimonials.length - 1;
+            }
+            showTestimonial(prevIndex);
+        });
+        
+        document.querySelectorAll('.testimonial-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTestimonial(index);
+            });
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            let nextIndex = currentTestimonial + 1;
+            if (nextIndex >= testimonials.length) {
+                nextIndex = 0;
+            }
+            showTestimonial(nextIndex);
+        }, 8000);
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            // Trigger initial scroll to show visible elements
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>

@@ -727,7 +727,7 @@ class WavyBackground {
   loader.className = 'page-loader';
   loader.innerHTML = `
       <div class="loader-content">
-          <img src="img/Jodis Logo finale.svg" width="80px" alt="LOGO">
+          <img src="img/Jodis Logo finale copie.webp" width="80px" alt="LOGO">
           <div class="loading-bar">
               <div class="loading-progress"></div>
           </div>
